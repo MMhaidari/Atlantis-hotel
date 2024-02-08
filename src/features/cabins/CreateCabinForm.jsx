@@ -4,6 +4,7 @@ import Input from "../../ui/Input";
 import Form from "../../ui/Form";
 import Button from "../../ui/Button";
 import Textarea from "../../ui/Textarea";
+import FileInput from '../../ui/FileInput'
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createCabin } from "../../services/apiCabins";
@@ -28,8 +29,8 @@ function CreateCabinForm() {
   })
 
 
-  const onSubmit = (data) => {
-    mutate(data)
+  function onSubmit(data) {
+    mutate({ ...data, image: data.image[0] });
   }
 
   const onError = (errors) => {
@@ -74,10 +75,15 @@ function CreateCabinForm() {
         })} />
       </FormRow>
 
-      {/* <FormRow>
-        <Label htmlFor="image">Cabin photo</Label>
-        <FileInput id="image" accept="image/*" />
-      </FormRow>  */}
+      <FormRow label="Cabin photo">
+        <FileInput
+          id="image"
+          accept="image/*"
+          {...register("image", {
+            required: "This field is required",
+          })}
+        />
+      </FormRow>
 
       <FormRow>
         {/* type is an HTML attribute! */}
