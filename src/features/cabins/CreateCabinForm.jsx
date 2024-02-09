@@ -4,14 +4,11 @@ import Button from "../../ui/Button";
 import Textarea from "../../ui/Textarea";
 import FileInput from '../../ui/FileInput'
 import { useForm } from "react-hook-form";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import toast from "react-hot-toast";
 import FormRow from "../../ui/FormRow";
-import { createEditCabin } from "../../services/apiCabins";
 import { useCreateCabin } from "./useCreateCabin";
 import { useEditCabin } from "./useEditCabin";
 
-function CreateCabinForm({ cabinToEdit = {} }) {
+function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
 
   const {isCreating, createCabin} = useCreateCabin()
   const {isEditing, editCabin} = useEditCabin()
@@ -30,9 +27,17 @@ function CreateCabinForm({ cabinToEdit = {} }) {
   function onSubmit(data) {
     const image = typeof data.image === 'string' ? data.image : data.image[0]
     
-    if (isEditSession) editCabin({ newCabinData: { ...data, image}, id: editId});
+    if (isEditSession) editCabin({ newCabinData: { ...data, image}, id: editId}, {
+      onSuccess: () => {
+        reset();
+        onCloseModal?.()
+       }
+    });
     else createCabin({ ...data, image: image }, {
-      onSuccess: () => reset()
+      onSuccess: () =>{
+         reset();
+         onCloseModal?.()
+        }
     });
   }
 
@@ -41,7 +46,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit, onError)}>
+    <Form onSubmit={handleSubmit(onSubmit, onError)} type={onCloseModal ? 'modal' : "regular"}>
 
       <FormRow label='Cabin name' error={errors?.name?.message}>
       <Input type="text" id="name" disabled={isWorking} {...register('name', {
@@ -90,7 +95,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button variation="secondary" type="reset" onClick={() => onCloseModal?.()}>
           Cancel
         </Button>
         <Button disabled={isWorking}>{isEditSession ? 'Edit cabin' : 'Create new cabin'}</Button>
