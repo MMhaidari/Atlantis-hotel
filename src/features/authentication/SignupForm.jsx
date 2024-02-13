@@ -87,7 +87,7 @@ function SignupForm() {
       </FormRowVertical>
 
       <FormRowVertical>
-        {/* type is an HTML attribute! */}
+        <Button disabled={isLoading}>Create new user</Button>
         <Button
           variation="secondary"
           type="reset"
@@ -96,7 +96,6 @@ function SignupForm() {
         >
           Cancel
         </Button>
-        <Button disabled={isLoading}>Create new user</Button>
       </FormRowVertical>
       <StyledLink to="/login">Login</StyledLink>
     </Form>
