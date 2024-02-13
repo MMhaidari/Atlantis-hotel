@@ -36,5 +36,12 @@
         <pre><code>npm run dev</code></pre>
     </ol>
     <p>Now, you have the Atlantis hotel App up and running locally. Feel free to explore and customize it according to your needs!</p>
+    ![desktop](https://github.com/MMhaidari/Atlantis-hotel/assets/99756088/d731dc38-1572-4592-998b-c4daef04a152)
+    ![dashboard](https://github.com/MMhaidari/Atlantis-hotel/assets/99756088/bd0348d5-a23d-41a5-92b1-d621f988df18)
+    ![cabins](https://github.com/MMhaidari/Atlantis-hotel/assets/99756088/b3662dd5-792e-472b-a46e-3d9881886e49)
+    ![bookings](https://github.com/MMhaidari/Atlantis-hotel/assets/99756088/45ab2412-c539-4e55-a5ba-8289ed2a686e)
+    ![settings](https://github.com/MMhaidari/Atlantis-hotel/assets/99756088/8df4a823-089b-44df-8537-38b556fcd77d)
+
+
 </body>
 </html>
