@@ -10,7 +10,7 @@
     <h1>Atlantis Hotel Booking Service</h1>
     <h2>What is Atlantis Hotel Booking Service App?</h2>
     <p> Atlantis hotel booking platform using React.js and supabase to streamline manual booking processes for hotel owners. The platform solves the problem of time-consuming and error-prone manual management, offering a user-friendly interface for efficient booking management. Through iterative refinement, the project delivers a polished and effective solution tailored to the needs of hotel owners.</p>
-    <a href="https://atlantis-hotel.vercel.app/login">Online Demo</a>
+    <a href="https://atlantis-hotel.vercel.app">Online Demo</a>
     <h2>Key Features</h2>
     <ul>
 <li><strong>Login:</strong> Secure access to personalized features and account information.</li>
